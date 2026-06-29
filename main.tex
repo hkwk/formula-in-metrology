@@ -19,6 +19,7 @@
 \newcommand{\copyrightYear}{2026}
 \newcommand{\copyrightOwner}{Huang Kunlun}
 \newcommand{\licenseText}{本作品采用 CC BY 4.0 许可证（详见 \url{https://creativecommons.org/licenses/by/4.0/}）。}
+\newcommand{\githuburl}{\url{https://github.com/hkwk/formula-in-metrology/}}
 
 % -------------------- 设置PDF元数据（无 pdfcopyright） --------------------
 \hypersetup{
@@ -33,14 +34,14 @@
 % -------------------- 设置页眉页脚 --------------------
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\small \copyright\ \copyrightYear\ \copyrightOwner}
+\fancyhead[L]{\small \copyright\ \copyrightYear\ \copyrightOwner\ \githuburl}
 \fancyhead[R]{\small 注册计量师公式}
 \fancyfoot[C]{\thepage\ / \pageref{LastPage}}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0pt}
 
 % -------------------- 添加文字水印（使用 draftwatermark） --------------------
-\SetWatermarkText{\copyright\ \copyrightYear\ \copyrightOwner}
+\SetWatermarkText{\copyright\ \copyrightYear\ \copyrightOwner }
 \SetWatermarkLightness{0.85}      % 0~1，数值越大颜色越淡（1=白色）
 \SetWatermarkAngle{45}            % 倾斜角度
 \SetWatermarkScale{0.6}             % 字号缩放
@@ -55,7 +56,8 @@
     {\Huge \copyright\ \copyrightYear\ \copyrightOwner} \\[1cm]
     {\Large 保留所有权利。} \\[0.5cm]
     \licenseText \\[0.5cm]
-    {\large 您可以自由地分享（复制、分发）和改编（修改、衍生）本作品，但必须注明出处。} \\
+    {\large 您可以自由地分享（复制、分发）和改编（修改、衍生）本作品，但必须注明出处。} \\[0.5cm]
+    {\large Original version is from \githuburl} \\
     \vspace*{\fill}
 \end{center}
 \newpage
