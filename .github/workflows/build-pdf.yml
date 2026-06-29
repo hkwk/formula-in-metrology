@@ -1,0 +1,49 @@
+name: Build and Release PDF
+
+on:
+  push:
+    tags:
+      - 'v*'                # 当推送以 'v' 开头的标签时触发
+  workflow_dispatch:        # 也支持手动触发（可选）
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install TeX Live and Chinese support
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            texlive-xetex \
+            texlive-latex-extra \
+            texlive-fonts-recommended \
+            texlive-lang-chinese \
+            latexmk \
+            fonts-noto-cjk        # 安装中文字体（Noto CJK）
+
+      - name: Compile LaTeX document
+        run: |
+          latexmk -xelatex -interaction=nonstopmode -file-line-error main.tex
+
+      - name: Verify PDF output
+        run: |
+          if [ ! -f main.pdf ]; then
+            echo "PDF compilation failed: main.pdf not found"
+            exit 1
+          fi
+
+      - name: Create Release and Upload PDF
+        uses: softprops/action-gh-release@v1
+        with:
+          files: main.pdf
+          name: Release ${{ github.ref_name }}
+          body: |
+            This release contains the PDF compiled from `main.tex` using XeLaTeX.
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
