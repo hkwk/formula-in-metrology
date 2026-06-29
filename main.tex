@@ -1,18 +1,68 @@
 % !TeX program = xelatex
-\documentclass[UTF8]{ctexart}  % 使用 ctexart 文档类，UTF-8 编码
+\documentclass[UTF8]{ctexart}
 
-% -------------------- 导言区（宏包与设置） --------------------
-\usepackage{graphicx}      % 插图支持
-\usepackage{amsmath}       % 数学公式
-\usepackage{amssymb}       % 更多数学符号
-\usepackage{geometry}      % 页面设置
-\geometry{a4paper, margin=2.5cm}  % 页边距
+% -------------------- 原有宏包（保留） --------------------
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
 
+% -------------------- 新增版权保护宏包 --------------------
+\usepackage{fancyhdr}          % 页眉页脚
+\usepackage{lastpage}          % 总页数
+\usepackage{hyperref}          % PDF元数据
+\usepackage{draftwatermark}    % 文字水印（稳定可靠）
+\usepackage{pifont}            % 提供带圈数字（如需使用 \ding{172} 等）
 
+% -------------------- 版权信息定义 --------------------
+\newcommand{\copyrightYear}{2026}
+\newcommand{\copyrightOwner}{Huang Kunlun}
+\newcommand{\licenseText}{本作品采用 CC BY 4.0 许可证（详见 \url{https://creativecommons.org/licenses/by/4.0/}）。}
+
+% -------------------- 设置PDF元数据（无 pdfcopyright） --------------------
+\hypersetup{
+    pdftitle={注册计量师公式汇编},
+    pdfauthor={\copyrightOwner},
+    pdfsubject={计量学；版权声明：\copyright\ \copyrightYear\ \copyrightOwner},
+    pdfkeywords={注册计量师, 测量不确定度, 统计},
+    pdfcreator={XeLaTeX},
+    % 若需额外版权信息，可放在 pdfsubject 中
+}
+
+% -------------------- 设置页眉页脚 --------------------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small \copyright\ \copyrightYear\ \copyrightOwner}
+\fancyhead[R]{\small 注册计量师公式}
+\fancyfoot[C]{\thepage\ / \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% -------------------- 添加文字水印（使用 draftwatermark） --------------------
+\SetWatermarkText{\copyright\ \copyrightYear\ \copyrightOwner}
+\SetWatermarkLightness{0.85}      % 0~1，数值越大颜色越淡（1=白色）
+\SetWatermarkAngle{45}            % 倾斜角度
+\SetWatermarkScale{0.6}             % 字号缩放
 
 % -------------------- 正文开始 --------------------
 \begin{document}
 
+% 可选的独立版权页（放在正文前）
+\thispagestyle{empty}
+\begin{center}
+    \vspace*{\fill}
+    {\Huge \copyright\ \copyrightYear\ \copyrightOwner} \\[1cm]
+    {\Large 保留所有权利。} \\[0.5cm]
+    \licenseText \\[0.5cm]
+    {\large 您可以自由地分享（复制、分发）和改编（修改、衍生）本作品，但必须注明出处。} \\
+    \vspace*{\fill}
+\end{center}
+\newpage
+
+\pagestyle{fancy}   % 恢复页眉页脚
+
+% ---------- 以下保留您的全部原有内容（从 \section{注册计量师公式} 开始） ----------
 \section{注册计量师公式}
 
 
